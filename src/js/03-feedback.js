@@ -32,8 +32,9 @@ function onFormSubmit(evt) {
 
 function populateFormInput() {
     const savedFormInput = localStorage.getItem(STORAGE_DATA_KEY);
-    parsedSavedFormInput = JSON.parse(savedFormInput);
-    if (parsedSavedFormInput) {
+   
+    if (savedFormInput) {
+      parsedSavedFormInput = JSON.parse(savedFormInput);
       formEmail.value = parsedSavedFormInput.email;
       formMessage.value = parsedSavedFormInput.message;
     }
