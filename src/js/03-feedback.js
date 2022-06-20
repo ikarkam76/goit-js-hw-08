@@ -16,10 +16,9 @@ feedbackForm.addEventListener('input', throttle(onFormInput, 500));
 feedbackForm.addEventListener('submit', onFormSubmit);
 
 function onFormInput(evt) {
-  formData[evt.target.name] = evt.target.value;
+  formData [evt.target.name] = evt.target.value;
   localStorage.setItem(STORAGE_DATA_KEY, JSON.stringify(formData));
-   console.log(formData);
-}
+};
 
 
 function populateFormInput() {
@@ -32,12 +31,22 @@ function populateFormInput() {
         formMessage.value = savedFormInput.message;
     };
   } 
-} 
+};
 
 
 function onFormSubmit(evt) {
   evt.preventDefault();
+  const formDataSubmit = JSON.parse(localStorage.getItem(STORAGE_DATA_KEY));
 
-  // evt.currentTarget.reset();
-
-}
+  if (formDataSubmit) {
+    if (!formDataSubmit.email) {
+      return alert('enter your email!')
+    }
+    if (!formDataSubmit.message) {
+      return alert('enter your message!')
+    }
+    console.log(formDataSubmit);
+    localStorage.removeItem(STORAGE_DATA_KEY);
+    evt.target.reset();
+  }
+};
