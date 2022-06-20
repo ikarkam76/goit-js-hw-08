@@ -12,8 +12,8 @@ feedbackForm.addEventListener('submit', onFormSubmit);
 
 function onFormInput(evt) {
   formData[evt.target.name] = evt.target.value;
-  localFormData = JSON.stringify(formData);
-  localStorage.setItem(STORAGE_DATA_KEY, localFormData);
+  localStorage.setItem(STORAGE_DATA_KEY, JSON.stringify(formData));
+   console.log(JSON.stringify(formData));
 }
 
 populateFormInput();
@@ -28,7 +28,6 @@ function populateFormInput() {
         formMessage.value = savedFormInput.message;
     }
   } 
-      console.log(savedFormInput);
 } 
 
 
